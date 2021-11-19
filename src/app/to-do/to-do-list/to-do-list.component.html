@@ -1,0 +1,22 @@
+<div>
+  <span>Sort by: </span>
+  <button (click)="sortBy('title')">Title</button>
+  <button (click)="sortBy('completed')">Completed</button>
+  <button (click)="sortBy('due-date')">Due Date</button>
+</div>
+
+<ul>
+  <li *ngFor="let toDoItem of toDoList">
+    <app-to-do-item
+      [toDoItem]="toDoItem"
+      (toDoItemClickEvent)="handleToDoItemClick(toDoItem)"
+    ></app-to-do-item>
+  </li>
+</ul>
+
+<div *ngIf="selectedToDoItem">
+  <app-to-do-item-detail
+    [toDoItem]="selectedToDoItem"
+    (toDoItemDetailCloseEvent)="handleToDoItemDetailClick()"
+  ></app-to-do-item-detail>
+</div>

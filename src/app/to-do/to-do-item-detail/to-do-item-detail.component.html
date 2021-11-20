@@ -1,8 +1,15 @@
 <div>
-  <div>ID: {{ toDoItem.id }}</div>
+  <div>
+    <span>ID: </span>
+    {{ toDoItem.id }}
+  </div>
   <div>
     <span>Title: </span>
     <input type="text" [(ngModel)]="toDoItem.title" />
+  </div>
+  <div>
+    <span>Created At: </span>
+    {{ toDoItem.createdAt | date: "medium" }}
   </div>
   <div>
     <span>Due Date: </span>
@@ -23,4 +30,4 @@
     </button>
   </div>
 </div>
-<button (click)="emitClick()">Close detail</button>
+<button (click)="emitEvent()">Close detail</button>

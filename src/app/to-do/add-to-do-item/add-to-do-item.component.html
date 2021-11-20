@@ -1,0 +1,19 @@
+<div>
+  <div>
+    <span>Title: </span>
+    <input type="text" [(ngModel)]="toDoItem.title" />
+  </div>
+  <div>
+    <span>Due Date: </span>
+    <input
+      type="datetime-local"
+      [(ngModel)]="toDoItem.dueDate"
+      
+    />
+  </div>
+  <div>
+    <div>Description:</div>
+    <textarea [(ngModel)]="toDoItem.description"></textarea>
+  </div>
+  <button (click)="emitEvent()">Submit</button>
+</div>

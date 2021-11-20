@@ -9,15 +9,15 @@ import { ToDoItem } from '../to-do-item';
 export class ToDoItemComponent implements OnInit {
 
   @Input() toDoItem: ToDoItem = {} as ToDoItem;
-  @Output() toDoItemClickEvent = new EventEmitter();
+  @Output() toDoItemEvent = new EventEmitter();
 
   constructor() { }
 
   ngOnInit(): void {
   }
 
-  emitClick(): void {
-    this.toDoItemClickEvent.emit();
+  emitEvent(): void {
+    this.toDoItemEvent.emit();
   }
 
 }

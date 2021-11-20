@@ -1,22 +1,31 @@
+<button (click)="buttonShowAddToDoItem()">Add ToDo</button>
+
+<ng-container *ngIf="showAddToDoItemState">
+  <app-add-to-do-item
+    (addToDoItemEvent)="handleAddToDoItemEvent($event)"
+  ></app-add-to-do-item>
+</ng-container>
+
 <div>
   <span>Sort by: </span>
-  <button (click)="sortBy('title')">Title</button>
-  <button (click)="sortBy('completed')">Completed</button>
-  <button (click)="sortBy('due-date')">Due Date</button>
+  <button (click)="buttonSortBy('title')">Title</button>
+  <button (click)="buttonSortBy('completed')">Completed</button>
+  <button (click)="buttonSortBy('due-date')">Due Date</button>
 </div>
 
 <ul>
   <li *ngFor="let toDoItem of toDoList">
+    <!-- <li *ngFor="let toDoItem of toDoList | async"> -->
     <app-to-do-item
       [toDoItem]="toDoItem"
-      (toDoItemClickEvent)="handleToDoItemClick(toDoItem)"
+      (toDoItemEvent)="liToDoItem(toDoItem)"
     ></app-to-do-item>
   </li>
 </ul>
 
-<div *ngIf="selectedToDoItem">
+<ng-container *ngIf="selectedToDoItem">
   <app-to-do-item-detail
     [toDoItem]="selectedToDoItem"
-    (toDoItemDetailCloseEvent)="handleToDoItemDetailClick()"
+    (toDoItemDetailEvent)="handleToDoItemDetailEvent()"
   ></app-to-do-item-detail>
-</div>
+</ng-container>

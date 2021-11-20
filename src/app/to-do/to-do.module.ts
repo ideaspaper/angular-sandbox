@@ -7,6 +7,7 @@ import { ToDoListComponent } from './to-do-list/to-do-list.component';
 import { ToDoItemComponent } from './to-do-item/to-do-item.component';
 import { ToDoItemDetailComponent } from './to-do-item-detail/to-do-item-detail.component';
 import { FormsModule } from '@angular/forms';
+import { AddToDoItemComponent } from './add-to-do-item/add-to-do-item.component';
 
 
 @NgModule({
@@ -14,7 +15,8 @@ import { FormsModule } from '@angular/forms';
     ToDoComponent,
     ToDoListComponent,
     ToDoItemComponent,
-    ToDoItemDetailComponent
+    ToDoItemDetailComponent,
+    AddToDoItemComponent
   ],
   imports: [
     CommonModule,

@@ -1,4 +1,4 @@
-<div (click)="emitClick()">
+<div (click)="emitEvent()">
   <div>Title: {{ toDoItem.title }}</div>
   <div>Due Date: {{ toDoItem.dueDate | date: "shortDate" }}</div>
   <div *ngIf="toDoItem.completed; else elseBlock">Completed</div>

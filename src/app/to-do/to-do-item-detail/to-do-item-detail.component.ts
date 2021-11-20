@@ -9,15 +9,15 @@ import { ToDoItem } from '../to-do-item';
 export class ToDoItemDetailComponent implements OnInit {
 
   @Input() toDoItem: ToDoItem = {} as ToDoItem;
-  @Output() toDoItemDetailCloseEvent = new EventEmitter();
+  @Output() toDoItemDetailEvent = new EventEmitter();
 
   constructor() { }
 
   ngOnInit(): void {
   }
 
-  emitClick(): void {
-    this.toDoItemDetailCloseEvent.emit();
+  emitEvent(): void {
+    this.toDoItemDetailEvent.emit();
   }
 
   toggleCompleted(): void {

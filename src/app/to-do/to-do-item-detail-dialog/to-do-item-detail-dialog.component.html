@@ -1,0 +1,42 @@
+<div>
+  <h2 mat-dialog-title>{{ toDoItem.id }}. {{ toDoItem.title }}</h2>
+  <mat-dialog-content>
+    <div>
+      <mat-form-field>
+        <mat-label>Created At</mat-label>
+        <input
+          matInput
+          [ngModel]="toDoItem.createdAt | date: 'medium'"
+          disabled
+        />
+      </mat-form-field>
+    </div>
+    <div>
+      <mat-form-field>
+        <mat-label>Due Date</mat-label>
+        <input
+          matInput
+          type="datetime-local"
+          [ngModel]="toDoItem.dueDate | date: 'yyyy-MM-ddTHH:mm'"
+          (ngModelChange)="toDoItem.dueDate = $event"
+        />
+      </mat-form-field>
+    </div>
+    <div>
+      <mat-form-field>
+        <mat-label>Description</mat-label>
+        <textarea
+          matInput
+          [(ngModel)]="toDoItem.description"
+          rows="10"
+        ></textarea>
+      </mat-form-field>
+    </div>
+    <div>
+      <button mat-button (click)="toggleCompleted()">
+        <div *ngIf="toDoItem.completed; else elseBlock">Mark as Uncomplete</div>
+        <ng-template #elseBlock>Mark as Completed</ng-template>
+      </button>
+    </div>
+  </mat-dialog-content>
+</div>

@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ToDoItemDetailComponent } from './to-do-item-detail.component';
+import { AddToDoItemDialogComponent } from './add-to-do-item-dialog.component';
 
-describe('ToDoItemDetailComponent', () => {
-  let component: ToDoItemDetailComponent;
-  let fixture: ComponentFixture<ToDoItemDetailComponent>;
+describe('AddToDoItemDialogComponent', () => {
+  let component: AddToDoItemDialogComponent;
+  let fixture: ComponentFixture<AddToDoItemDialogComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ToDoItemDetailComponent ]
+      declarations: [ AddToDoItemDialogComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ToDoItemDetailComponent);
+    fixture = TestBed.createComponent(AddToDoItemDialogComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

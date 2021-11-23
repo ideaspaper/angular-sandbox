@@ -1,6 +1,10 @@
-<div (click)="emitEvent()">
-  <div>Title: {{ toDoItem.title }}</div>
-  <div>Due Date: {{ toDoItem.dueDate | date: "shortDate" }}</div>
-  <div *ngIf="toDoItem.completed; else elseBlock">Completed</div>
-  <ng-template #elseBlock>Uncomplete</ng-template>
-</div>
+<mat-card class="to-do-card" (click)="emitEvent()">
+  <mat-card-title>
+    {{ toDoItem.title }}
+  </mat-card-title>
+  <mat-card-subtitle>
+    <div>Due Date: {{ toDoItem.dueDate | date: "shortDate" }}</div>
+    <div *ngIf="toDoItem.completed; else elseBlock">Completed</div>
+    <ng-template #elseBlock>Uncomplete</ng-template>
+  </mat-card-subtitle>
+</mat-card>

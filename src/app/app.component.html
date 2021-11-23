@@ -1,4 +1,8 @@
-<h1>{{ title }}</h1>
-<button routerLink="/home">Home</button>
-<button routerLink="/to-do">To-Do</button>
+<mat-toolbar>
+  <div>My Personal Angular Sandbox</div>
+  <div>
+    <button mat-flat-button disableRipple routerLink="/home">Home</button>
+    <button mat-flat-button disableRipple routerLink="/to-do">ToDo</button>
+  </div>
+</mat-toolbar>
 <router-outlet></router-outlet>

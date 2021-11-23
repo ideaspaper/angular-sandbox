@@ -1,0 +1,8 @@
+mat-toolbar {
+  justify-content: space-between;
+}
+
+button {
+  margin-right: 1rem;
+  background-color: transparent;
+}

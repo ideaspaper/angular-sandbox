@@ -2,6 +2,9 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Observable, Subscription } from 'rxjs';
 import { ToDoItem } from '../to-do-item';
 import { ToDoListService } from '../to-do-list.service';
+import { MatDialog } from '@angular/material/dialog';
+import { ToDoItemDetailDialogComponent } from '../to-do-item-detail-dialog/to-do-item-detail-dialog.component';
+import { AddToDoItemDialogComponent } from '../add-to-do-item-dialog/add-to-do-item-dialog.component';
 
 @Component({
   selector: 'app-to-do-list',
@@ -12,12 +15,14 @@ export class ToDoListComponent implements OnInit, OnDestroy {
 
   toDoList: ToDoItem[] = {} as ToDoItem[];
   private subscriptions: Subscription[] = [];
-  // toDoList: Observable<ToDoItem[]> = {} as Observable<ToDoItem[]>;
   private sortState = true;
   selectedToDoItem?: ToDoItem;
-  showAddToDoItemState = false;
 
-  constructor(private toDoListService: ToDoListService) { }
+  constructor(
+    private toDoListService: ToDoListService,
+    public toDoItemDetailDialog: MatDialog,
+    public addToDoItemDialog: MatDialog
+  ) { }
 
   ngOnInit(): void {
     this.getToDoList();
@@ -32,10 +37,16 @@ export class ToDoListComponent implements OnInit, OnDestroy {
 
   liToDoItem(toDoItem: ToDoItem): void {
     this.selectedToDoItem = toDoItem;
+    this.toDoItemDetailDialog.open(ToDoItemDetailDialogComponent, { data: toDoItem, width: '40vw' });
   }
 
   buttonShowAddToDoItem(): void {
-    this.showAddToDoItemState = !this.showAddToDoItemState;
+    const dialogRef = this.addToDoItemDialog.open(AddToDoItemDialogComponent, { width: '40vw' });
+    this.subscriptions.push(
+      dialogRef.afterClosed().subscribe((data) => {
+        if (data) this.toDoListService.addToDoItem(data.toDoItem);
+      })
+    );
   }
 
   buttonSortBy(property: string): void {
@@ -53,18 +64,6 @@ export class ToDoListComponent implements OnInit, OnDestroy {
       else if (valueA < valueB) return -1;
       else return 0;
     });
-    // this.toDoList.forEach((element) => {
-    //   return element.sort((a, b) => {
-    //     let valueA: any, valueB: any;
-    //     if (property === 'title') [valueA, valueB] = [a.title, b.title];
-    //     else if (property === 'completed') [valueA, valueB] = [a.completed, b.completed];
-    //     else if (property === 'due-date') [valueA, valueB] = [a.dueDate, b.dueDate];
-    //     if (this.sortState) [valueA, valueB] = [valueB, valueA];
-    //     if (valueA > valueB) return 1;
-    //     else if (valueA < valueB) return -1;
-    //     else return 0;
-    //   });
-    // });
   }
 
   handleToDoItemDetailEvent(): void {
@@ -73,7 +72,6 @@ export class ToDoListComponent implements OnInit, OnDestroy {
 
   handleAddToDoItemEvent(newToDoItem: ToDoItem): void {
     this.toDoListService.addToDoItem(newToDoItem);
-    this.showAddToDoItemState = false;
   }
 
   getToDoList(): void {
@@ -82,7 +80,6 @@ export class ToDoListComponent implements OnInit, OnDestroy {
         this.toDoList = data;
       })
     );
-    // this.toDoList = this.toDoListService.getToDoList();
   }
 
 }

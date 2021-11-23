@@ -1,6 +1,6 @@
 import { ToDoItem } from "./to-do-item";
 
-export const TODOLIST: ToDoItem[] = [
+export const toDoList: ToDoItem[] = [
   {
     id: 1,
     title: 'Homework',

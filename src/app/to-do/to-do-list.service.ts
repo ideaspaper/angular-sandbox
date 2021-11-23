@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
-import { TODOLIST } from './mock-to-do-list';
+import { toDoList } from './mock-to-do-list';
 import { ToDoItem } from './to-do-item';
 
 @Injectable({
@@ -8,7 +8,7 @@ import { ToDoItem } from './to-do-item';
 })
 export class ToDoListService {
 
-  private toDoList: ToDoItem[] = TODOLIST;
+  private toDoList: ToDoItem[] = toDoList;
 
   constructor() { }
 

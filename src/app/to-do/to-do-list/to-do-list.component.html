@@ -1,31 +1,19 @@
-<button (click)="buttonShowAddToDoItem()">Add ToDo</button>
-
-<ng-container *ngIf="showAddToDoItemState">
-  <app-add-to-do-item
-    (addToDoItemEvent)="handleAddToDoItemEvent($event)"
-  ></app-add-to-do-item>
-</ng-container>
-
-<div>
+<!-- <div>
   <span>Sort by: </span>
-  <button (click)="buttonSortBy('title')">Title</button>
-  <button (click)="buttonSortBy('completed')">Completed</button>
-  <button (click)="buttonSortBy('due-date')">Due Date</button>
-</div>
-
-<ul>
-  <li *ngFor="let toDoItem of toDoList">
-    <!-- <li *ngFor="let toDoItem of toDoList | async"> -->
+  <button mat-button (click)="buttonSortBy('title')">Title</button>
+  <button mat-button (click)="buttonSortBy('completed')">Completed</button>
+  <button mat-button (click)="buttonSortBy('due-date')">Due Date</button>
+</div> -->
+<mat-grid-list cols="3" gutterSize="1rem" rowHeight="10rem">
+  <mat-grid-tile>
+    <button mat-icon-button (click)="buttonShowAddToDoItem()">
+      <mat-icon>add</mat-icon>
+    </button>
+  </mat-grid-tile>
+  <mat-grid-tile *ngFor="let toDoItem of toDoList">
     <app-to-do-item
       [toDoItem]="toDoItem"
       (toDoItemEvent)="liToDoItem(toDoItem)"
     ></app-to-do-item>
-  </li>
-</ul>
-
-<ng-container *ngIf="selectedToDoItem">
-  <app-to-do-item-detail
-    [toDoItem]="selectedToDoItem"
-    (toDoItemDetailEvent)="handleToDoItemDetailEvent()"
-  ></app-to-do-item-detail>
-</ng-container>
+  </mat-grid-tile>
+</mat-grid-list>

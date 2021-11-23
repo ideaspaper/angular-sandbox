@@ -11,3 +11,9 @@ $ ng g service to-do/to-do-list
 ```
 
 [Reference](https://angular.io/guide/lazy-loading-ngmodules)
+
+<mat-button-toggle 
+  [checked]="myFlagForButtonToggle" 
+  (change)="myFlagForButtonToggle = $event.source.checked">
+    Toggle me!
+</mat-button-toggle>
